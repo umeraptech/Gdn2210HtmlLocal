@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        /* Create two columns/boxes that floats next to each other */
+        nav {
+            float: left;
+            width: 30%;
+            height: 300px;
+            /* only for demonstration, should be removed */
+            background: #ccc;
+            padding: 20px;
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px;
+            /* only for demonstration, should be removed */
+
+            /*New Addition*/
+            text-align: justify;
+            text-indent: 5px;
+
+        }
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display:inherit;
+            clear: both;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        @media (max-width: 600px) {
+
+            nav,
+            article {
+                width: 100%;
+                height: auto;
+
+                
+            }
+        }
+
+        /*New */
+        .heading{
+             text-transform: capitalize; /*none capitalize uppercase lowercase */
+        }
+
+        .phead{
+            text-decoration: underline;
+            color: red;
+            background-color: black;
+            word-spacing: 2px;
+            
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Cities</h2>
+    </header>
+
+    <section>
+        <nav>
+            <ul>
+                <li><a href="#" class="heading">London</a></li>
+                <li><a href="#" class="heading">Paris</a></li>
+                <li><a href="#" class="heading">Tokyo</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h1 class="phead">London City</h1>
+            <p>London is the capital city of <span style="text-transform:uppercase;">England</span>. It is the most populous city in the United Kingdom, with a
+                metropolitan area of over 13 million inhabitants.</p>
+            <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going
+                back to its founding by the Romans, who named it Londinium.</p>
+            <p id="check">
+                <label for="">Select Any color</label>&nbsp;
+                <input type="color" name="txtColor" id="txtColor">
+            </p>
+        </article>
+    </section>
+
+    <footer>
+        <p>Welcome you have accessed following page in <span id="access" style="color:red">0</span> times</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        //    var value = $("#access").text();
+        //    console.log("acces value is "+value);
+        //    value++;
+        //    $("#access").text(value);
+        //    console.log("acces value is "+value);
+
+        if (localStorage.getItem("counter")==null){
+            localStorage.setItem("counter",1);
+            
+        }
+
+       
+        counterValue = localStorage.getItem("counter");
+        counterValue++;
+        localStorage.setItem("counter",counterValue)
+
+        $("#access").text(localStorage.getItem("counter"));
+
+        });
+
+       
+    </script>
+</body>
+
+</html>
